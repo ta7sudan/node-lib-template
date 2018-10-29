@@ -5,7 +5,7 @@
   "main": "dist/{{bundleName}}.js",
   "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
-  "scripts": {{{if hasRollup}}
+  "scripts": { {{if hasRollup}}
     "build": "rollup -c",
     "prebuild": "rimraf dist",
     "build-dev": "rollup -c rollup.dev.js",{{/if}}{{if hasPock}}
@@ -60,7 +60,7 @@
   "browserslist": [
     "current node"
   ],
-  "devDependencies": {{{if hasTest}}
+  "devDependencies": { {{if hasTest}}
     "ava": "1.0.0-rc.1",
     "codecov": "^3.1.0",{{/if}}
     "eslint": "^5.7.0",
