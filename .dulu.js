@@ -84,13 +84,17 @@ module.exports = function (projectName) {
 				templates.push('.travis.yml');
 			}
 
+			if (!hasPock) {
+				excludes.push('.pockrc.yml', 'example/router');
+			}
+
 			if (hasTest) {
 				templates.push('test/index.test.js');
 				if (!hasPock) {
 					excludes.push('test/_pock.js');
 				}
-			} else if (!hasPock) {
-				excludes.push('.pockrc.yml', 'example/router');
+			} else {
+				excludes.push('test');
 			}
 
 			return {
