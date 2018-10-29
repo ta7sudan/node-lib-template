@@ -1,2 +1,2 @@
-# node-lib-template
-A node library template for dulu
+# {{project}}
+A library template for dulu
