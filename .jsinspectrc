@@ -2,5 +2,5 @@
   "identifiers":   true,
   "literals":      true,
   "color":         true,
-  "ignore":        "test|example|dist"
+  "ignore":        "test|example"
 }

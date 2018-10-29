@@ -7,6 +7,6 @@ require('./_pock');{{/if}}
 const sleep = time => new Promise(rs => setTimeout(rs, time));
 const isObj = o => Object.prototype.toString.call(o) === '[object Object]';
 
-test('todo', async (t, page) => {
+test('todo', async t => {
 	t.pass();
 });

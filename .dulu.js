@@ -21,28 +21,13 @@ module.exports = function (projectName) {
 				name: 'desc',
 				type: 'input',
 				message: 'Project description',
-				default: 'A rollup library project'
+				default: 'A node library project'
 			},
 			{
 				name: 'keywords',
 				type: 'input',
 				message: 'Keywords',
-				default: 'rollup'
-			},
-			{
-				name: 'hasRollup',
-				type: 'confirm',
-				message: 'Set up Rollup?',
-				default: true
-			},
-			{
-				name: 'bundleName',
-				type: 'input',
-				message: 'Bundle name',
-				default: projectName,
-				when({ hasRollup }) {
-					return hasRollup;
-				}
+				default: 'todo'
 			},
 			{
 				name: 'hasTest',
@@ -81,17 +66,13 @@ module.exports = function (projectName) {
 			}
 		],
 		complete(answers) {
-			const { hasRollup, hasTest, hasPock, hasTravis, needNpmrc } = answers,
+			const { hasTest, hasPock, hasTravis, needNpmrc } = answers,
 				excludes = ['.dulu.js'],
-				templates = ['_package.json', 'LICENSE', 'rollup.config.js', 'rollup.dev.js', 'README.md'],
+				templates = ['_package.json', 'LICENSE', 'README.md'],
 				transform = {
 					'_package.json': 'package.json'
 				};
 			answers.keywords = answers.keywords ? answers.keywords.split(/\s+/) : [];
-
-			if (!hasRollup) {
-				excludes.push('rollup.config.js', 'rollup.dev.js')
-			}
 
 			if (!needNpmrc) {
 				excludes.push('.npmrc');

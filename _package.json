@@ -2,20 +2,17 @@
   "name": "{{project}}",
   "version": "0.1.0",
   "description": "{{desc}}",
-  "main": "dist/{{bundleName}}.js",
+  "main": "src/index.js",
   "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
-  "scripts": { {{if hasRollup}}
-    "build": "rollup -c",
-    "prebuild": "rimraf dist",
-    "build-dev": "rollup -c rollup.dev.js",{{/if}}{{if hasPock}}
+  "scripts": { {{if hasPock}}
     "start": "pock",{{/if}}
     "lint": "eslint src test",
     "format": "prettier --config .prettierrc.js --write src/**/*.js test/**/*.js",
     "inspect": "jsinspect src"{{if hasTest}},
     "test": "nyc ava -v",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"{{/if}}{{if !hasTravis}},
-    "prepare": "{{if hasTest}}npm test && {{/if}}{{if hasRollup}}npm run build{{/if}}"{{/if}}
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"{{/if}}{{if !hasTravis&&hasTest}},
+    "prepare": "npm test"{{/if}}
   },
   "repository": {
     "type": "git",
@@ -42,7 +39,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run build && npm run build-dev && git add ."{{if !hasTravis&&hasTest}},
+      "pre-commit": "lint-staged"{{if !hasTravis&&hasTest}},
       "pre-push": "npm test"{{/if}}
     }
   },{{if hasTest}}
@@ -57,9 +54,6 @@
     ]
   },{{/if}}
   "homepage": "https://github.com/{{author}}/{{project}}#readme",
-  "browserslist": [
-    "current node"
-  ],
   "devDependencies": { {{if hasTest}}
     "ava": "1.0.0-rc.1",
     "codecov": "^3.1.0",{{/if}}
@@ -70,10 +64,6 @@
     "lint-staged": "^7.3.0",{{if hasTest}}
     "nyc": "^13.1.0",{{/if}}{{if hasPock}}
     "pock": "^0.3.3",{{/if}}
-    "prettier": "^1.14.3"{{if hasRollup}},
-    "rimraf": "^2.6.2",
-    "rollup": "^0.66.6",
-    "rollup-plugin-babel-minify": "^6.1.1",
-    "rollup-plugin-replace": "^2.1.0"{{/if}}
+    "prettier": "^1.14.3"
   }
 }
