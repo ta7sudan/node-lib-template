@@ -7,7 +7,7 @@
   "typings": "types/index.d.ts",
   "scripts": { {{if hasPock}}
     "start": "pock",{{/if}}
-    "lint": "eslint src{{if hasTest} test{{/if}}",
+    "lint": "eslint src{{if hasTest}} test{{/if}}",
     "format": "prettier --config .prettierrc.js --write src/**/*.js test/**/*.js",
     "inspect": "jsinspect src"{{if hasTest}},
     "test": "nyc ava -v",
