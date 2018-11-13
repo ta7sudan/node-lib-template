@@ -11,7 +11,8 @@
     "format": "prettier --config .prettierrc.js --write src/**/*.js test/**/*.js",
     "inspect": "jsinspect src"{{if hasTest}},
     "test": "nyc ava -v",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"{{/if}}{{if !hasTravis&&hasTest}},
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "report": "nyc report --reporter=html"{{/if}}{{if !hasTravis&&hasTest}},
     "prepare": "npm test"{{/if}}
   },
   "repository": {
