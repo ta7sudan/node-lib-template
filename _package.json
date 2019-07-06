@@ -35,11 +35,6 @@
     "example",
     "types"
   ],
-  "lint-staged": {
-    "*.js": [
-      "eslint"
-    ]
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"{{if !hasTravis&&hasTest}},
