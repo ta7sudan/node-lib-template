@@ -11,7 +11,7 @@
     "format": "prettier --config .prettierrc.js --write {{if hasTest}}{src,test}/**/*.js{{else}}src/**/*.js{{/if}}",
     "inspect": "jsinspect src"{{if hasTest}},
     "test": "nyc ava -v",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t todo",
     "report": "nyc report --reporter=html"{{/if}},{{if !hasTravis&&hasTest}}
     "prepare": "npm test",{{/if}}
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
